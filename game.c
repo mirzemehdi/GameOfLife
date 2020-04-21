@@ -15,8 +15,10 @@ void G_start(game g){
 	int nb_rows=ar.nb_rows;
 	int nb_cols=ar.nb_cols;
 
-	while(1){
+	for(int i=0;;i++){
+
 		CT_print(g.table);
+		CT_draw(*ct,"life",0);
 		cellTable copyTable=CT_copy(*ct);
 		for (int i = 0; i < nb_rows; ++i)
 		{
@@ -68,21 +70,28 @@ int getAliveStatus(cell c,cellTable table){
 
 int main(int argc, char const *argv[])
 {
-	arena ar=A_new(5,8);
+	arena ar=A_new(30,30);
 
 	cellTable ct=CT_init(ar);
-	CT_makeCellAliveDead(&ct,0,0,1);
-	CT_makeCellAliveDead(&ct,1,2,1);
-	CT_makeCellAliveDead(&ct,2,2,1);
-	CT_makeCellAliveDead(&ct,2,3,1);
-	CT_makeCellAliveDead(&ct,3,1,1);
-	CT_makeCellAliveDead(&ct,3,2,1);
-	CT_makeCellAliveDead(&ct,4,1,1);
+	// CT_makeCellAliveDead(&ct,0,0,1);
+	// CT_makeCellAliveDead(&ct,1,2,1);
+	// CT_makeCellAliveDead(&ct,2,2,1);
+	// CT_makeCellAliveDead(&ct,2,3,1);
+	// CT_makeCellAliveDead(&ct,3,1,1);
+	// CT_makeCellAliveDead(&ct,3,2,1);
+	// CT_makeCellAliveDead(&ct,4,1,1);
+
+	CT_makeCellAliveDead(&ct,4,23,1);
+	CT_makeCellAliveDead(&ct,5,23,1);
+	CT_makeCellAliveDead(&ct,6,23,1);
+	CT_makeCellAliveDead(&ct,6,24,1);
+	CT_makeCellAliveDead(&ct,5,25,1);
+	// CT_makeCellAliveDead(&ct,4,1,1);
 
 
 
 
-	game g=G_create(1000,ct);
+	game g=G_create(100,ct);
 	G_start(g);
 
 	return 0;
