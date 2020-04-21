@@ -1,12 +1,11 @@
 #include "cellTable.h"
-#include "cell.h"
-#include "arena.h"
 #include <stdlib.h>
 #include <stdio.h>
 
 cellTable CT_init(arena ar){
 
 	cell** cellArr=(cell**)malloc(ar.nb_rows * sizeof(cell *));
+
 	for (int i = 0; i < ar.nb_rows; ++i)
 	{
 		cellArr[i]=(cell*)malloc(ar.nb_cols * sizeof(cell));
@@ -14,10 +13,7 @@ cellTable CT_init(arena ar){
 		{
 			
 			cellArr[i][j]=C_new(i,j,0);
-			// if ((i==3)&&(j==4||j==2))
-			// {
-			// 	cellArr[i][j].isDead=0;
-			// }
+			
 		}
 	}
 	cellTable ct={cellArr,ar};
@@ -33,44 +29,44 @@ cellList CT_neighbours(cellTable ct,cell c){
 	//Upper
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 	//Lower
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 	//Left 
 	tempCell.row=c.row;
 	tempCell.col=c.col-1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 	//Right
 	tempCell.col=c.col+1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 
 	//Upper Right
 	tempCell.col=c.col+1;
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 
 	//Upper Left
 	tempCell.col=c.col-1;
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 
 //Lower Left
 	tempCell.col=c.col-1;
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 
 
 
@@ -78,7 +74,7 @@ cellList CT_neighbours(cellTable ct,cell c){
 	tempCell.col=c.col+1;
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
-		CL_add(&neighbourList,tempCell);
+		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 	                                                                                                                   
 
 	return neighbourList;
@@ -106,17 +102,26 @@ void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive){
 	c->isAlive=isAlive;
 }
 
+cellTable CT_copy(cellTable ct){
 
-int main(int argc, char const *argv[])
-{
-	arena ar=A_new(5,8);
+	arena ar=ct.arena;
+	cellTable copyCT=CT_init(ar);
+	cell** cellArr=copyCT.table;
 
-	cellTable ct=CT_init(ar);
-	CT_makeCellAliveDead(&ct,2,4,1);
-	CT_print(ct);
-	cellList neighbourList=CT_neighbours(ct,C_new(3,4,1));
-	printf("neighbourList\n");
-	CL_print(neighbourList);
+	for (int i = 0; i < ar.nb_rows; ++i)
+	{
+		for (int j = 0; j < ar.nb_cols; j++)
+			cellArr[i][j]=ct.table[i][j];
+			
+	}
+	copyCT.table=cellArr;
 
-	return 0;
+	return copyCT;
+
 }
+
+
+
+
+
+

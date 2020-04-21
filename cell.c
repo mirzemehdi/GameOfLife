@@ -7,6 +7,6 @@ cell C_new(int row,int col,int isAlive){
 }
 
 void C_print(cell c){
-	printf("Cell info: {row:%d,column:%d,isDead:%d}\n",c.row,c.col ,c.isAlive);
+	printf("Cell info: {row:%d,column:%d,isAlive:%d}\n",c.row,c.col ,c.isAlive);
 }
 

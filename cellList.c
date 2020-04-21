@@ -11,6 +11,8 @@ void CL_add(cellList *cl,cell c){
 		cl->arr[cl->size++]=c;
 }
 
+
+
 void CL_print(cellList cl){
 
 	for (int i = 0; i < cl.size; ++i)
