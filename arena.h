@@ -2,6 +2,8 @@
 #define __ARENA__
 #include "cell.h"
 
+/* The arena structure has rows and columns which will be 
+given by the user as the size(boudaries) of the game */
 struct arena {
 	int nb_rows;
 	int nb_cols;

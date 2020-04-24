@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include "ppm.h"
 
+/* The CT_init() function creates a new table. First of all it should have the
+size of the boundaries which we gain from arena. For each row and column
+we assign the values of 2D array of cells to 0 and return the table */
+
 cellTable CT_init(arena ar){
 
 	cell** cellArr=(cell**)malloc(ar.nb_rows * sizeof(cell *));
@@ -10,17 +14,21 @@ cellTable CT_init(arena ar){
 	for (int i = 0; i < ar.nb_rows; ++i)
 	{
 		cellArr[i]=(cell*)malloc(ar.nb_cols * sizeof(cell));
+
 		for (int j = 0; j < ar.nb_cols; j++)
 		{
-			
 			cellArr[i][j]=C_new(i,j,0);
-			
 		}
 	}
 	cellTable ct={cellArr,ar};
 
 	return ct;
 }
+
+/* The CT_neighbours function is written in order to return the list of
+existence neigbours. Giving the table of cells and the concrete cell, we check
+if the neighbour from any side exists (by using the A_isInside function written before),
+and if exists we referencly add it in an array of neighbours */
 
 cellList CT_neighbours(cellTable ct,cell c){
 
@@ -77,10 +85,11 @@ cellList CT_neighbours(cellTable ct,cell c){
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
 	                                                                                                                   
-
 	return neighbourList;
 
 } 
+/* The function prints the table. For each row and column
+it prints the status of cell in that location */
 
 void CT_print(cellTable ct){
 	int nb_rows=ct.arena.nb_rows;
@@ -106,10 +115,17 @@ void CT_print(cellTable ct){
 
 }
 
+/* The CT_makeCellAliveDead() function is written in order to 
+change the status(Alive or Dead) of the cell to opposite one. 
+It will help us alot in further problems */
+
 void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive){
 	cell *c=&(ct->table[row][col]);
 	c->isAlive=isAlive;
 }
+
+/* This function creates a copy of the table, it will
+help us in further problems of saving data  */
 
 cellTable CT_copy(cellTable ct){
 
