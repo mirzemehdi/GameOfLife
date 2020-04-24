@@ -86,16 +86,24 @@ void CT_print(cellTable ct){
 	int nb_rows=ct.arena.nb_rows;
 	int nb_cols=ct.arena.nb_cols;
 
+	
+	// go to 0,0
+	printf("\033[0;0H");
+
 	for (int i = 0; i < nb_rows; ++i)
 	{
 		for (int j = 0; j < nb_cols; ++j)
 		{
 			cell c=ct.table[i][j];
-			printf("%d ",c.isAlive );
+
+			int colorInt=c.isAlive? 40 : 101;
+			printf("\033[%dm  ",colorInt);
+			//printf("%d ",c.isAlive );
 			
 		}
 		printf("\n");
 	}
+
 }
 
 void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive){

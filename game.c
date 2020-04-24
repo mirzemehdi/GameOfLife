@@ -15,10 +15,16 @@ void G_start(game g){
 	int nb_rows=ar.nb_rows;
 	int nb_cols=ar.nb_cols;
 
+	//Clear Screen
+	printf("\033[2J");
+
+	//Hide Screen
+	printf("\033[?25l");
+
 	for(int i=0;;i++){
 
 		CT_print(g.table);
-		CT_draw(*ct,"life",0);
+		//CT_draw(*ct,"life",0);
 		cellTable copyTable=CT_copy(*ct);
 		for (int i = 0; i < nb_rows; ++i)
 		{
@@ -40,15 +46,11 @@ void G_start(game g){
 int getAliveStatus(cell c,cellTable table){
 	//Previous status
 	int currentStatus=c.isAlive;
-
 	// 0 or 1 -> dead
 	// 4 or more ->> dead
 	// 2 or 3 -->alive
 	// exact 3 alive -> 
 	cellList neighbours=CT_neighbours(table,c);
-
-
-
 
 	int nb_alive_neighbours=0;
 	for (int i = 0; i < neighbours.size; ++i)
