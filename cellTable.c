@@ -28,7 +28,7 @@ cellTable CT_init(arena ar){
 /* The CT_neighbours function is written in order to return the list of
 existence neigbours. Giving the table of cells and the concrete cell, we check
 if the neighbour from any side exists (by using the A_isInside function written before),
-and if exists we referencly add it in an array of neighbours */
+and if exists we  add it in an array of neighbours */
 
 cellList CT_neighbours(cellTable ct,cell c){
 
@@ -105,7 +105,7 @@ void CT_print(cellTable ct){
 		{
 			cell c=ct.table[i][j];
 
-			int colorInt=c.isAlive? 40 : 101;
+			int colorInt=c.isAlive? 40 : 101; 
 			printf("\033[%dm  ",colorInt);
 			//printf("%d ",c.isAlive );
 			
@@ -116,7 +116,7 @@ void CT_print(cellTable ct){
 }
 
 /* The CT_makeCellAliveDead() function is written in order to 
-change the status(Alive or Dead) of the cell to opposite one. 
+change the status(Alive or Dead) of the cell to given isAlive one. 
 It will help us alot in further problems */
 
 void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive){
@@ -145,6 +145,7 @@ cellTable CT_copy(cellTable ct){
 }
 
 
+/* Saves an image in ppm format  */
 void CT_draw(cellTable ct, char *ppm_name,int imgIndex)
 {
 	int pixels_per_cell = 20;

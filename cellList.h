@@ -5,7 +5,7 @@
 #include "cell.h"
 
 /* The CellList structure is written to keep the cells in the array,
-because later on we will need a 2D array of the cells*/
+because later on we will need to keep neighbours of the cells*/
 
 struct cellList{
 
