@@ -4,6 +4,9 @@
 #include "cellList.h"
 #include "cell.h"
 
+/* cellTable structure is the table of cells, it has a bounders
+(arena) and table itself */
+
 struct cellTable{
 	cell** table;
 	arena arena;

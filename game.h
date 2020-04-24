@@ -3,6 +3,9 @@
 #include "cellTable.h"
 #include "arena.h"
 
+/* The game structure has the time value and the table structure.
+The time is the vslue given by the user. The game will be updated
+every time after this certain time */
 
 struct game{
 

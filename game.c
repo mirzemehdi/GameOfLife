@@ -2,11 +2,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/* This function creates a new Game! */
 
 game G_create(int timeMilliSec,cellTable ct){
 	game g={timeMilliSec,ct};
 	return g;
 }
+
+/* The function G_start() creates a new view every time the
+time given by the user passes. */
 
 void G_start(game g){
 	cellTable* ct=&(g.table);
@@ -37,6 +41,12 @@ void G_start(game g){
 
 }
 
+/* The function getAliveStatus() is the main function of the game. That is how
+game works with its rules. If an alive cell has a 0 or 1 alive neighbours, it will turn
+to be dead beacuse of under-population. If an alive cell has 4 or more alive neighbours, it will also turn
+to be dead because of overcrowding. If an alive cell has 2 or 3 alive neighbours it lives on to 
+the next generation. Any dead cell with exactly three live neighbours becomes alive.  */
+
 int getAliveStatus(cell c,cellTable table){
 	//Previous status
 	int currentStatus=c.isAlive;
@@ -46,9 +56,6 @@ int getAliveStatus(cell c,cellTable table){
 	// 2 or 3 -->alive
 	// exact 3 alive -> 
 	cellList neighbours=CT_neighbours(table,c);
-
-
-
 
 	int nb_alive_neighbours=0;
 	for (int i = 0; i < neighbours.size; ++i)
