@@ -10,15 +10,8 @@ int main(int argc, char const *argv[])
 	printf("(2) Circular\n");
 	scanf("%d",&option);
 
-	if (option==1)
-	{
-		printf("Clipped\n");
-	}
-	else if (option==2)
-	{
-		printf("Circular\n");
-	}
-	else
+	//Option 1 for clipped version , option 2 for circular
+	if (option!=1 && option!=2)
 		printf("Wrong option\n");
 
 	arena ar=A_new(30,30); //boundaries of table
@@ -35,9 +28,9 @@ int main(int argc, char const *argv[])
 
 
 	//Creating game with given time and table
-	game g=G_create(100,ct);
+	game g=G_create(100,ct,option);
 	//Starts the game .Repeats an algoritm in table each timeUnit(given by the user)
-	//G_start(g); 
+	G_start(g); 
 
 	return 0;
 }

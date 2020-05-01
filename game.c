@@ -4,8 +4,8 @@
 
 /* This function creates a new Game! */
 
-game G_create(int timeMilliSec,cellTable ct){
-	game g={timeMilliSec,ct};
+game G_create(int timeMilliSec,cellTable ct,int option){
+	game g={timeMilliSec,ct,option};
 	return g;
 }
 
@@ -35,7 +35,7 @@ void G_start(game g){
 			for (int j = 0; j < nb_cols; ++j)
 			{
 				cell c=copyTable.table[i][j];
-				int isAlive=getAliveStatus(c,copyTable);
+				int isAlive=getAliveStatus(c,copyTable,g.option);
 				CT_makeCellAliveDead(ct,c.row,c.col,isAlive);
 			}
 		}
@@ -53,14 +53,14 @@ to be dead beacuse of under-population. If an alive cell has 4 or more alive nei
 to be dead because of overcrowding. If an alive cell has 2 or 3 alive neighbours it lives on to 
 the next generation. Any dead cell with exactly three live neighbours becomes alive.  */
 
-int getAliveStatus(cell c,cellTable table){
+int getAliveStatus(cell c,cellTable table,int option){
 	//Previous status
 	int currentStatus=c.isAlive;
 	// 0 or 1 --> dead
 	// 4 or more --> dead
 	// 2 or 3 --> alive
 	// exact 3 --> alive 
-	cellList neighbours=CT_neighbours(table,c);
+	cellList neighbours=CT_neighbours(table,c,option);
 
 	int nb_alive_neighbours=0;
 	for (int i = 0; i < neighbours.size; ++i)

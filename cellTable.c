@@ -30,7 +30,8 @@ existence neigbours. Giving the table of cells and the concrete cell, we check
 if the neighbour from any side exists (by using the A_isInside function written before),
 and if exists we  add it in an array of neighbours */
 
-cellList CT_neighbours(cellTable ct,cell c){
+cellList CT_neighbours(cellTable ct,cell c,int option){
+	//option = 2 means it is circular
 
 	arena ar=ct.arena;
 	cell tempCell=c;
@@ -39,22 +40,50 @@ cellList CT_neighbours(cellTable ct,cell c){
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+	else{
+		if (option==2)
+		{
+			tempCell.row=ar.nb_rows-1;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 	//Lower
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+	else{
+		if (option==2)
+		{
+			tempCell.row=0;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 	//Left 
 	tempCell.row=c.row;
 	tempCell.col=c.col-1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+	else{
+		if (option==2)
+		{
+			tempCell.col=ar.nb_cols-1;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 	//Right
 	tempCell.col=c.col+1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+	else{
+		if (option==2)
+		{
+			tempCell.col=0;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 
 	//Upper Right
@@ -62,6 +91,14 @@ cellList CT_neighbours(cellTable ct,cell c){
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+	else{
+		if (option==2)
+		{
+			tempCell.row=(ar.nb_rows+tempCell.row)%ar.nb_rows;
+			tempCell.col=(ar.nb_cols+tempCell.col)%ar.nb_cols;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 
 	//Upper Left
@@ -69,14 +106,28 @@ cellList CT_neighbours(cellTable ct,cell c){
 	tempCell.row=c.row-1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
-
+	else{
+		if (option==2)
+		{
+			tempCell.row=(ar.nb_rows+tempCell.row)%ar.nb_rows;
+			tempCell.col=(ar.nb_cols+tempCell.col)%ar.nb_cols;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 //Lower Left
 	tempCell.col=c.col-1;
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
-
+	else{
+		if (option==2)
+		{
+			tempCell.row=(ar.nb_rows+tempCell.row)%ar.nb_rows;
+			tempCell.col=(ar.nb_cols+tempCell.col)%ar.nb_cols;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	}
 
 
 //Lower Right
@@ -84,7 +135,16 @@ cellList CT_neighbours(cellTable ct,cell c){
 	tempCell.row=c.row+1;
 	if(A_isInside(tempCell,ar))
 		CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
-	                                                                                                                   
+	else{
+		if (option==2)
+		{
+			tempCell.row=(ar.nb_rows+tempCell.row)%ar.nb_rows;
+			tempCell.col=(ar.nb_cols+tempCell.col)%ar.nb_cols;
+			CL_add(&neighbourList,ct.table[tempCell.row][tempCell.col]);
+		}
+	} 
+
+
 	return neighbourList;
 
 } 
