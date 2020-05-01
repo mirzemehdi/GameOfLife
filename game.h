@@ -11,12 +11,13 @@ struct game{
 
 	int timeMilliSec;
 	cellTable table;
+	int option;
 
 };
 typedef struct game game;
 
-game G_create(int timeMilliSec,cellTable ct);
+game G_create(int timeMilliSec,cellTable ct,int option);
 void G_start(game g);
-int getAliveStatus(cell c,cellTable table);
+int getAliveStatus(cell c,cellTable table,int option);
 
 #endif
