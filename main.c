@@ -8,7 +8,9 @@ int main(int argc, char const *argv[])
 	printf("Please, give the option value you wanna run\n");
 	printf("(1) Clipped\n");
 	printf("(2) Circular\n");
+	printf("Option: ");
 	scanf("%d",&option);
+
 
 	//Option 1 for clipped version , option 2 for circular
 	if (option!=1 && option!=2)
