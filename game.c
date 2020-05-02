@@ -28,7 +28,6 @@ void G_start(game g){
 	for(int i=0;;i++){
 
 		CT_print(g.table);
-		//CT_draw(*ct,"life",0);
 		cellTable copyTable=CT_copy(*ct);
 		for (int i = 0; i < nb_rows; ++i)
 		{
@@ -44,6 +43,9 @@ void G_start(game g){
 		printf("\n");
 
 	}
+
+	//Show cursor
+	printf("\033[?25h");
 
 }
 
