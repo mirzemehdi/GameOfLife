@@ -1,7 +1,6 @@
 #include "cellTable.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "ppm.h"
 
 /* The CT_init() function creates a new table. First of all it should have the
 size of the boundaries which we gain from arena. For each row and column
@@ -205,31 +204,7 @@ cellTable CT_copy(cellTable ct){
 }
 
 
-/* Saves an image in ppm format  */
-void CT_draw(cellTable ct, char *ppm_name,int imgIndex)
-{
-	int pixels_per_cell = 20;
-	char ppm_file_name[50];
-	float proportion_serpent = 0.7;
-	int nb_rows=ct.arena.nb_rows;
-	int nb_cols=ct.arena.nb_cols;
 
-	struct ppm img = PPM_new(nb_rows, nb_cols, pixels_per_cell, proportion_serpent);
-	img = PPM_drawBG(img);
-
-	for (int i = 0; i < nb_rows; ++i)
-	{
-		for (int j = 0; j < nb_cols; ++j)
-		{
-			cell c=ct.table[i][j];
-			if (c.isAlive)
-				img = PPM_drawCell(img, c.row, c.col);
-			
-		}
-	}
-	sprintf(ppm_file_name,"%s_%02d.ppm",ppm_name,imgIndex);
-	PPM_save(img,ppm_file_name);
-}
 
 
 

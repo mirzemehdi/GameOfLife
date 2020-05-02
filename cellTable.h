@@ -20,6 +20,5 @@ void CT_print(cellTable ct);
 void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive);
 cellList CT_neighbours(cellTable ct,cell c,int option);
 cellTable CT_copy(cellTable ct);
-void CT_draw(cellTable ct, char *ppm_name,int imgIndex);
 
 #endif
