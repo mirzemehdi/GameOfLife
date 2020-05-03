@@ -1,50 +1,39 @@
 #include "game.h"
-#include "board_drawer.h"
 #include <stdio.h>
 #include <unistd.h>
 
 /* This function creates a new Game! */
 
-game G_create(int timeMilliSec,cellTable ct,int option){
-	game g={timeMilliSec,ct,option};
+game G_create(cellTable ct,int option){
+	game g={ct,option};
 	return g;
 }
 
 /* The function G_start() creates a new view every time the
 time given by the user passes. */
 
-void G_start(game g){
+void G_updateTable(game g){
 	cellTable* ct=&(g.table);
 	arena ar=ct->arena;
 
 	int nb_rows=ar.nb_rows;
 	int nb_cols=ar.nb_cols;
+		
+	cellTable copyTable=CT_copy(*ct);
 
-	//This is function from board_drawer lib which clears screen and hides cursor
-	clearScreenHideCursor();
-
-	for(int i=0;;i++){
-
-		//This is function from board_drawer lib which draws given table in console
-		draw(g.table);
-		cellTable copyTable=CT_copy(*ct);
-		for (int i = 0; i < nb_rows; ++i)
-		{
-			for (int j = 0; j < nb_cols; ++j)
-			{
-				cell c=copyTable.table[i][j];
-				int isAlive=getAliveStatus(c,copyTable,g.option);
-				CT_makeCellAliveDead(ct,c.row,c.col,isAlive);
-			}
+	for (int i = 0; i < nb_rows; ++i){
+		for (int j = 0; j < nb_cols; ++j){
+			cell c=copyTable.table[i][j];
+			int isAlive=getAliveStatus(c,copyTable,g.option);
+			CT_makeCellAliveDead(ct,c.row,c.col,isAlive);
 		}
-
-		usleep(1000*g.timeMilliSec);
-		printf("\n");
-
 	}
 
-
+	
 }
+
+
+
 
 /* The function getAliveStatus() is the main function of the game. That is how
 game works with its rules. If an alive cell has a 0 or 1 alive neighbours, it will turn

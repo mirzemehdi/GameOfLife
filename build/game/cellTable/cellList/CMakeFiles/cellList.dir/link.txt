@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libcellList.so -o libcellList.so CMakeFiles/cellList.dir/cellList.c.o 
