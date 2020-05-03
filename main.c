@@ -13,8 +13,10 @@ int main(int argc, char const *argv[])
 
 
 	//Option 1 for clipped version , option 2 for circular
-	if (option!=1 && option!=2)
+	if (option!=1 && option!=2){
 		printf("Wrong option\n");
+		return 0;
+	}
 
 	arena ar=A_new(30,30); //boundaries of table
 	cellTable ct=CT_init(ar); //2D cell Table within arena
@@ -29,7 +31,7 @@ int main(int argc, char const *argv[])
 
 
 
-	//Creating game with given time and table
+	//Creating game with given time delay and table
 	game g=G_create(100,ct,option);
 	//Starts the game .Repeats an algoritm in table each timeUnit(given by the user)
 	G_start(g); 

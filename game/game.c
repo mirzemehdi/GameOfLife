@@ -1,4 +1,5 @@
 #include "game.h"
+#include "board_drawer.h"
 #include <stdio.h>
 #include <unistd.h>
 
@@ -19,15 +20,13 @@ void G_start(game g){
 	int nb_rows=ar.nb_rows;
 	int nb_cols=ar.nb_cols;
 
-	//Clear Screen
-	printf("\033[2J");
-
-	//Hide Screen
-	printf("\033[?25l");
+	//This is function from board_drawer lib which clears screen and hides cursor
+	clearScreenHideCursor();
 
 	for(int i=0;;i++){
 
-		CT_print(g.table);
+		//This is function from board_drawer lib which draws given table in console
+		draw(g.table);
 		cellTable copyTable=CT_copy(*ct);
 		for (int i = 0; i < nb_rows; ++i)
 		{
@@ -44,8 +43,6 @@ void G_start(game g){
 
 	}
 
-	//Show cursor
-	printf("\033[?25h");
 
 }
 
