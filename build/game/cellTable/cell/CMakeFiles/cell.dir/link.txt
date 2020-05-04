@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC   -shared -Wl,-soname,libcell.so -o libcell.so CMakeFiles/cell.dir/cell.c.o 

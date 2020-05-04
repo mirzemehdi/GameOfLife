@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC   -shared -Wl,-soname,libarena.so -o libarena.so CMakeFiles/arena.dir/arena.c.o 
