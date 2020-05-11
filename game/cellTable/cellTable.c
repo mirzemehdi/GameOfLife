@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/* The CT_init() function creates a new table. First of all it should have the
-size of the boundaries which we gain from arena. For each row and column
-we assign the values of 2D array of cells to 0 and return the table */
+/**
+ * The CT_init() function creates a new table. First of all it should have the
+ * size of the boundaries which we gain from arena. For each row and column
+ * we assign the values of 2D array of cells to 0 and return the table
+ */
 
 cellTable CT_init(arena ar){
 
@@ -24,10 +26,12 @@ cellTable CT_init(arena ar){
 	return ct;
 }
 
-/* The CT_neighbours function is written in order to return the list of
-existence neigbours. Giving the table of cells and the concrete cell, we check
-if the neighbour from any side exists (by using the A_isInside function written before),
-and if exists we  add it in an array of neighbours */
+/**
+ * The CT_neighbours function is written in order to return the list of
+ * existence neigbours. Giving the table of cells and the concrete cell, we check
+ * if the neighbour from any side exists (by using the A_isInside function written before),
+ * and if exists we  add it in an array of neighbours
+ */
 
 cellList CT_neighbours(cellTable ct,cell c,int option){
 	//option = 2 means it is circular
@@ -147,8 +151,10 @@ cellList CT_neighbours(cellTable ct,cell c,int option){
 	return neighbourList;
 
 } 
-/* The function prints the table. For each row and column
-it prints the status of cell in that location */
+/**
+ * The function prints the table. For each row and column
+ * it prints the status of cell in that location
+ */
 
 void CT_print(cellTable ct){
 	int nb_rows=ct.arena.nb_rows;
@@ -168,17 +174,20 @@ void CT_print(cellTable ct){
 
 }
 
-/* The CT_makeCellAliveDead() function is written in order to 
-change the status(Alive or Dead) of the cell to given isAlive one. 
-It will help us alot in further problems */
+/** The CT_makeCellAliveDead() function is written in order to 
+ * change the status(Alive or Dead) of the cell to given isAlive one. 
+ * It will help us alot in further problems
+ */
 
 void CT_makeCellAliveDead(cellTable *ct,int row,int col,int isAlive){
 	cell *c=&(ct->table[row][col]);
 	c->isAlive=isAlive;
 }
 
-/* This function creates a copy of the table, it will
-help us in further problems of saving data  */
+/** 
+ * This function creates a copy of the table, it will
+ * help us in further problems of saving data 
+ */
 
 cellTable CT_copy(cellTable ct){
 

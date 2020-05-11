@@ -3,8 +3,9 @@
 
 #include "cellTable.h"
 
-
+//!Clears screen and hides cursor.
 void clearScreenHideCursor();
+//!Draws the table
 void draw(cellTable ct);
 
 

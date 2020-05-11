@@ -26,11 +26,9 @@ void SDL_init(SDL_Renderer** renderer,cellTable ct,char *title){
 
 }
 
+
 void SDL_draw(SDL_Renderer* renderer,cellTable ct){
-
-
-	
-	// SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+	//SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	for(int i=0; i<ct.arena.nb_rows; ++i)
 	{
 		for(int j= 0; j<ct.arena.nb_cols; ++j){
@@ -43,7 +41,6 @@ void SDL_draw(SDL_Renderer* renderer,cellTable ct){
 		}
 				
 	}
-	
 }
 
 

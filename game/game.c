@@ -2,15 +2,19 @@
 #include <stdio.h>
 #include <unistd.h>
 
-/* This function creates a new Game! */
+/**
+ *  This function creates a new Game!
+ */
 
 game G_create(cellTable ct,int option){
 	game g={ct,option};
 	return g;
 }
 
-/* The function G_start() creates a new view every time the
-time given by the user passes. */
+/**
+ *  The function G_start() creates a new view every time the
+ * time given by the user passes.
+*/
 
 void G_updateTable(game g){
 	cellTable* ct=&(g.table);
@@ -35,11 +39,13 @@ void G_updateTable(game g){
 
 
 
-/* The function getAliveStatus() is the main function of the game. That is how
-game works with its rules. If an alive cell has a 0 or 1 alive neighbours, it will turn
-to be dead beacuse of under-population. If an alive cell has 4 or more alive neighbours, it will also turn
-to be dead because of overcrowding. If an alive cell has 2 or 3 alive neighbours it lives on to 
-the next generation. Any dead cell with exactly three live neighbours becomes alive.  */
+/**
+ *  The function getAliveStatus() is the main function of the game. That is how
+ * game works with its rules. If an alive cell has a 0 or 1 alive neighbours, it will turn
+ * to be dead beacuse of under-population. If an alive cell has 4 or more alive neighbours, it will also turn
+ * to be dead because of overcrowding. If an alive cell has 2 or 3 alive neighbours it lives on to 
+ * the next generation. Any dead cell with exactly three live neighbours becomes alive.
+ */
 
 int getAliveStatus(cell c,cellTable table,int option){
 	//Previous status

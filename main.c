@@ -10,11 +10,10 @@
 
 void consoleDraw(int optionGame){
 
-
-	arena ar=A_new(30,30); //boundaries of table
-	cellTable ct=CT_init(ar); //2D cell Table within arena
+	arena ar=A_new(30,30); //!boundaries of table
+	cellTable ct=CT_init(ar); //!2D cell Table within arena
 	
-	//Initialize alive cells for starting
+	//!Initialize alive cells for starting
 	CT_makeCellAliveDead(&ct,4,23,1);
 	CT_makeCellAliveDead(&ct,5,23,1);
 	CT_makeCellAliveDead(&ct,6,23,1);
@@ -22,23 +21,25 @@ void consoleDraw(int optionGame){
 	CT_makeCellAliveDead(&ct,5,25,1);
 
 
-	//Creating game with given table and option
+	//!Creating game with given table and option
 	game g=G_create(ct,optionGame);
+	//!Starts the game. Repeats an algoritm in table each timeUnit
 	int sleepTimeMilliSec=50;
-	//Starts the game .Repeats an algoritm in table each timeUnit
 	
-	//This is function from board_drawer lib which clears screen and hides cursor
+	//!Function from board_drawer lib which clears screen and hides cursor
 	clearScreenHideCursor();
 	for (int i = 0;; ++i)
 	{
-		//This is function from board_drawer lib which draws given table in console
+		//!Function from board_drawer lib which draws given table in console
 		draw(g.table);
+		//!The time when the game will update
 		usleep(1000*sleepTimeMilliSec);
 		printf("\n");
 		G_updateTable(g);
 	} 
 }
 
+//!Function of drawing the game
 void sdlDraw(int optionGame){
 
 	//Drawing SDL
@@ -59,10 +60,10 @@ void sdlDraw(int optionGame){
 
 
 
-	//Creating game with given table and option
+	//!Creating game with given table and option
 	game g=G_create(ct,optionGame);
+	//!Starts the game. Repeats an algoritm in table each timeUnit
 	int sleepTimeMilliSec=10;
-	//Starts the game .Repeats an algoritm in table each timeUnit
 
 	SDL_Renderer *renderer;
 	SDL_init(&renderer,ct,"Game of Life");
