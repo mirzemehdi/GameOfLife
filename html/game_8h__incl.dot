@@ -1,0 +1,17 @@
+digraph "game.h"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="game.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="cellTable.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cellTable_8h.html",tooltip="We create a table of 2D array in here, where we will put the cells. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="arena.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$arena_8h.html",tooltip="Arena is used to check if the concrete cell is in the area given by the user or not. It has the values of sizes given by the user. "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="cell.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cell_8h.html",tooltip="The Life Game consists of a universe which contains live cells. Тhey appear and dissapear according t..."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="cellList.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$cellList_8h.html",tooltip="Creating the list of cells, with its size. "];
+  Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

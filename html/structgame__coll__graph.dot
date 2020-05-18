@@ -1,0 +1,12 @@
+digraph "game"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="game",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" table" ,fontname="Helvetica"];
+  Node2 [label="cellTable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcellTable.html",tooltip="Is the table of cells, it has a bounders (arena) and table itself. "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" table" ,fontname="Helvetica"];
+  Node3 [label="cell",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structcell.html",tooltip="First of all the cell which is the root of the Game . The roots will be placed in some area with size..."];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" arena" ,fontname="Helvetica"];
+  Node4 [label="arena",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structarena.html",tooltip="The arena structure has rows and columns which will be given by the user as the size(boudaries) of th..."];
+}
