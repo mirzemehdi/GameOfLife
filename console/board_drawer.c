@@ -4,9 +4,9 @@
 
 void clearScreenHideCursor(){
 
-	// clear screen
+	//! clear screen
 	printf("\033[2J");
-	// hide cursor
+	//! hide cursor
 	printf("\033[?25l");
 }
 
@@ -15,7 +15,7 @@ void clearScreenHideCursor(){
 
 void draw(cellTable ct){
 
-	// go to 0,0
+	//! go to 0,0
 	printf("\033[0;0H");
 
 	int nb_rows=ct.arena.nb_rows;

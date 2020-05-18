@@ -7,7 +7,7 @@
 /**
  *  The CellList structure is written to keep the cells in the array,
  * because later on we will need to keep neighbours of the cells
-*/
+ */
 
 struct cellList{
 

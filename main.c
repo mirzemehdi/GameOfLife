@@ -10,8 +10,10 @@
 
 void consoleDraw(int optionGame){
 
-	arena ar=A_new(30,30); //!boundaries of table
-	cellTable ct=CT_init(ar); //!2D cell Table within arena
+	//!boundaries of table
+	arena ar=A_new(30,30); 
+	//!2D cell Table within arena
+	cellTable ct=CT_init(ar); 
 	
 	//!Initialize alive cells for starting
 	CT_makeCellAliveDead(&ct,4,23,1);

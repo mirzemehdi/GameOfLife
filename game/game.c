@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 /**
- *  This function creates a new Game!
+ * This function creates a new Game!
  */
 
 game G_create(cellTable ct,int option){
@@ -12,9 +12,9 @@ game G_create(cellTable ct,int option){
 }
 
 /**
- *  The function G_start() creates a new view every time the
+ * The function G_start() creates a new view every time the
  * time given by the user passes.
-*/
+ */
 
 void G_updateTable(game g){
 	cellTable* ct=&(g.table);

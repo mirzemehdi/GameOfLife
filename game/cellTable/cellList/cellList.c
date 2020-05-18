@@ -11,7 +11,6 @@ cellList CL_new(){
 }
 
 /**
- /Users/nigaryf/Desktop/ufaz/sm2/Dev Tech/GoL/game/cellTable/cell/cell.c
  * In this function we add the cell in the array by reference , in order to not lose
  * the data out of the function 
  */
@@ -26,6 +25,7 @@ void CL_add(cellList *cl,cell c){
 /**
  *  This function is for printing the array of the cell
  */
+
 void CL_print(cellList cl){
 
 	for (int i = 0; i < cl.size; ++i)

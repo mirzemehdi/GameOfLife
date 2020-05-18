@@ -9,7 +9,7 @@
  * (arena) and table itself
  *
  * //@param table Passing the table
- * // @param table Passing the arena
+ * //@param arena Passing the arena
 */
 
 struct cellTable{
