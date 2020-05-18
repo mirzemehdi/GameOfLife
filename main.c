@@ -7,69 +7,101 @@
 #include <stdlib.h>
 #include <time.h>
 
+void consoleDraw(int optionGame)
+{
 
-void consoleDraw(int optionGame){
+	/**
+	 * Boundaries of table
+	 */
+	arena ar = A_new(30, 30);
 
-	//!boundaries of table
-	arena ar=A_new(30,30); 
-	//!2D cell Table within arena
-	cellTable ct=CT_init(ar); 
-	
-	//!Initialize alive cells for starting
-	CT_makeCellAliveDead(&ct,4,23,1);
-	CT_makeCellAliveDead(&ct,5,23,1);
-	CT_makeCellAliveDead(&ct,6,23,1);
-	CT_makeCellAliveDead(&ct,6,24,1);
-	CT_makeCellAliveDead(&ct,5,25,1);
+	/**
+	 * 2D cell Table within arena
+	 */
 
+	cellTable ct = CT_init(ar);
 
-	//!Creating game with given table and option
-	game g=G_create(ct,optionGame);
-	//!Starts the game. Repeats an algoritm in table each timeUnit
-	int sleepTimeMilliSec=50;
-	
-	//!Function from board_drawer lib which clears screen and hides cursor
+	/**
+	 * Initialize alive cells for starting
+	 */
+	CT_makeCellAliveDead(&ct, 4, 23, 1);
+	CT_makeCellAliveDead(&ct, 5, 23, 1);
+	CT_makeCellAliveDead(&ct, 6, 23, 1);
+	CT_makeCellAliveDead(&ct, 6, 24, 1);
+	CT_makeCellAliveDead(&ct, 5, 25, 1);
+
+	/**
+	 * Creating game with given table and option
+	 */
+	game g = G_create(ct, optionGame);
+	/**
+	 * Starts the game. Repeats an algoritm in table each timeUnit
+	 */
+	int sleepTimeMilliSec = 50;
+	/**
+	 * Function from board_drawer lib which clears screen and hides cursor
+	 */
 	clearScreenHideCursor();
 	for (int i = 0;; ++i)
 	{
-		//!Function from board_drawer lib which draws given table in console
+	/**
+	 * Function from board_drawer lib which draws given table in console
+	 */
 		draw(g.table);
-		//!The time when the game will update
-		usleep(1000*sleepTimeMilliSec);
+	/**
+	 * The time when the game will update
+	 */
+
+		usleep(1000 * sleepTimeMilliSec);
 		printf("\n");
 		G_updateTable(g);
-	} 
+	}
 }
+	/**
+	 * Function of drawing the game
+	 */
 
-//!Function of drawing the game
-void sdlDraw(int optionGame){
+void sdlDraw(int optionGame)
+{
 
 	//Drawing SDL
-	int nb_rows=500;
-	int nb_cols=500;
-	arena ar=A_new(nb_rows,nb_cols); //boundaries of table
-	cellTable ct=CT_init(ar); //2D cell Table within arena
-	
+	int nb_rows = 500;
+	int nb_cols = 500;
+	/**
+	 * Boundaries of table
+	 */
+	arena ar = A_new(nb_rows, nb_cols);
+	/**
+	 * 2D cell Table within arena
+	 */
+	cellTable ct = CT_init(ar);
+
 	srand(time(NULL));
-	// Initialize random alive cells for starting
+	/**
+	 * Initialize random alive cells for starting
+	 */
+
 	for (int i = 0; i < 23000; ++i)
 	{
-		int row=rand()%nb_rows;
-		int col=rand()%nb_cols;
+		int row = rand() % nb_rows;
+		int col = rand() % nb_cols;
 
-		CT_makeCellAliveDead(&ct,row,col,1);
+		CT_makeCellAliveDead(&ct, row, col, 1);
 	}
 
+	/**
+	 * Creating game with given table and option
+	 */
 
-
-	//!Creating game with given table and option
-	game g=G_create(ct,optionGame);
-	//!Starts the game. Repeats an algoritm in table each timeUnit
-	int sleepTimeMilliSec=10;
+	game g = G_create(ct, optionGame);
+	/**
+	 * Starts the game. Repeats an algoritm in table each timeUnit
+	*/
+	int sleepTimeMilliSec = 10;
 
 	SDL_Renderer *renderer;
-	SDL_init(&renderer,ct,"Game of Life");
-	
+	SDL_init(&renderer, ct, "Game of Life");
+
 	bool quit = false;
 	while (!quit)
 	{
@@ -83,8 +115,8 @@ void sdlDraw(int optionGame){
 				break;
 			}
 		}
-		SDL_draw(renderer,g.table);
-		usleep(1000*sleepTimeMilliSec);
+		SDL_draw(renderer, g.table);
+		usleep(1000 * sleepTimeMilliSec);
 		G_updateTable(g);
 		SDL_RenderPresent(renderer);
 	}
@@ -99,37 +131,33 @@ int main(int argc, char const *argv[])
 	printf("(1) Clipped\n");
 	printf("(2) Circular\n");
 	printf("Option: ");
-	scanf("%d",&optionGame);
-
+	scanf("%d", &optionGame);
 
 	//Option 1 for clipped version , option 2 for circular
-	if (optionGame!=1 && optionGame!=2){
+	if (optionGame != 1 && optionGame != 2)
+	{
 		printf("Wrong option\n");
 		return 0;
 	}
-
-
-
 
 	int optionOutput;
 	printf("You want to see output in console or with SDL library\n");
 	printf("(1) Console\n");
 	printf("(2) SDL library\n");
 	printf("Option: ");
-	scanf("%d",&optionOutput);
-
+	scanf("%d", &optionOutput);
 
 	//Option 1 for console version , option 2 for sdl lib
 
-	if (optionOutput==1)
+	if (optionOutput == 1)
 		consoleDraw(optionGame);
-	else if (optionOutput==2)
+	else if (optionOutput == 2)
 		sdlDraw(optionGame);
-	else{
+	else
+	{
 		printf("Wrong option\n");
 		return 0;
 	}
-
 
 	return 0;
 }

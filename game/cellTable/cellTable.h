@@ -4,10 +4,12 @@
 #include "cellList.h"
 #include "cell.h"
 
+
+/*! \struct cellTable
+    \brief  Is the table of cells, it has a bounders (arena) and table itself
+*/
+
 /**
- * cellTable structure is the table of cells, it has a bounders
- * (arena) and table itself
- *
  * //@param table Passing the table
  * //@param arena Passing the arena
 */

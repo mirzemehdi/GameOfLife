@@ -12,38 +12,43 @@
  * explained later in the Codes. Let's start with the game
  */
 
+
+/*! \struct game
+    \brief  For creating a new game has following parameters
+*/
+
 /**
- * The game structure has the time value and the table structure.
- * The time is the vslue given by the user. The game will be updated
- * every time after this certain time.
+ * @param table Table of the cells
+ * @param option Option to choose if the game to be continious or not
  */
 
-//!Creating the structure of the game
-struct game{
+struct game
+{
 
 	cellTable table; //**< Table of the cells */
-	int option; //**< Option to choose if the game to be continious or not */
-
+	int option;		 //**< Option to choose if the game to be continious or not */
 };
 typedef struct game game;
+
 /**
- * //!Creating the new game
- * //@param ct This is a cellTable
- * //@param option This is a option (2 for circular)
+ * Creating the new game
+ * @param ct This is a cellTable
+ * @param option This is a option (2 for circular)
  */
-game G_create(cellTable ct,int option);
+
+game G_create(cellTable ct, int option);
 /**
- * //!Creates a new view every time the time given by the user passes
- * //@param g This passes the game structure
+ * Creates a new view every time the time given by the user passes
+ * @param g This passes the game structure
  */
 void G_updateTable(game g);
 
 /**
- * //!function to see if cell is Alive or not
- * //@param c This passes the cell which will be got
- * //@param table This is the table in which we have the cell
- * //@param option for choosing the option of processing
+ * Function to see if cell is Alive or not
+ * @param c This passes the cell which will be got
+ * @param table This is the table in which we have the cell
+ * @param option for choosing the option of processing
  */
-int getAliveStatus(cell c,cellTable table,int option);
+int getAliveStatus(cell c, cellTable table, int option);
 
 #endif

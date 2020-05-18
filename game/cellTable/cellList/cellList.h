@@ -4,9 +4,14 @@
 #define CELL_MAX 8
 #include "cell.h"
 
+/*! \struct CellList
+    \brief  The CellList structure is written to keep the cells in the array,
+	because later on we will need to keep neighbours of the cells
+*/
+
 /**
- *  The CellList structure is written to keep the cells in the array,
- * because later on we will need to keep neighbours of the cells
+ * @param size This parameter is to set the size of cellList
+ * @param arr This parameter keeps the array of cells
  */
 
 struct cellList{

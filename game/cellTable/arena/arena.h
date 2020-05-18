@@ -2,9 +2,14 @@
 #define __ARENA__
 #include "cell.h"
 
+/*! \struct arena
+    \brief  The arena structure has rows and columns which will be 
+	given by the user as the size(boudaries) of the game
+*/
+
 /**
- * The arena structure has rows and columns which will be 
- * given by the user as the size(boudaries) of the game
+ * @param nb_rows This is the number or rows
+ * @param nb_cols This is the number or columns
  */
 
 struct arena {
