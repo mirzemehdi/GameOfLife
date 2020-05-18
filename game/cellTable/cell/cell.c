@@ -1,6 +1,9 @@
 #include "cell.h"
 #include <stdio.h>
 
+/*! \file cell.c
+    \brief 
+*/
 
 /**
  *  This funtion is to create a new cell giving it the row,

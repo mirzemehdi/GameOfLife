@@ -12,6 +12,9 @@
 #include "cellTable.h"
 
 
+/*! \file draw_sdl.c
+    \brief 
+*/
 
 void SDL_init(SDL_Renderer** renderer,cellTable ct,char *title){
 

@@ -1,16 +1,14 @@
 #include "arena.h"
 #include <stdio.h>
 
-/*! \file arena.c
-    \brief  Arena is used to check if the concrete cell is in the area
-	given by the user or not. It has the values of sizes given by the user
-*/
 
+/*! \file arena.c
+    \brief 
+*/
 
 /**
  * Here the new arena is created by giving the sizes of rows and columns
  */
-
 arena A_new(int nb_rows,int nb_cols){
 	arena a={nb_rows,nb_cols};
 	return a;

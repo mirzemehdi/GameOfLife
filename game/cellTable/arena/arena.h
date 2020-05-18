@@ -2,6 +2,13 @@
 #define __ARENA__
 #include "cell.h"
 
+/*! \file arena.h
+    \brief  Arena is used to check if the concrete cell is in the area
+	given by the user or not. It has the values of sizes given by the user
+*/
+
+
+
 /*! \struct arena
     \brief  The arena structure has rows and columns which will be 
 	given by the user as the size(boudaries) of the game

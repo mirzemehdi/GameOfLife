@@ -3,6 +3,10 @@
 
 #include "cellTable.h"
 
+/*! \file board_drawer.h
+    \brief Clearing screen, hiding the curson and drawing the table
+*/
+
 /**
  * Clears screen and hides cursor
  * */

@@ -2,6 +2,10 @@
 #include "cellTable.h"
 #include <stdio.h>
 
+/*! \file board_drawer.c
+    \brief 
+*/
+
 void clearScreenHideCursor(){
 
 	//! clear screen

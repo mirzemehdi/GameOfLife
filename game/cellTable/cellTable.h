@@ -5,14 +5,18 @@
 #include "cell.h"
 
 
+/*! \file cellTable.h
+    \brief  We create a table of 2D array in here, where we will put the cells
+*/
+
 /*! \struct cellTable
     \brief  Is the table of cells, it has a bounders (arena) and table itself
 */
 
 /**
- * //@param table Passing the table
- * //@param arena Passing the arena
-*/
+ * @param table Passing the table
+ * @param arena Passing the arena
+ */
 
 struct cellTable{
 	cell** table;

@@ -4,6 +4,10 @@
 #include <SDL.h>
 #include "cellTable.h"
 
+/*! \file darw_sdl.h
+    \brief  Drawing the game
+*/
+
 /**
  * Initialize Renderer, with respect to height and width of table 
  * @param renderer

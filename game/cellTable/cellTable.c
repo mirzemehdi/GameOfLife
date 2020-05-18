@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/*! \file cellTable.c
+    \brief 
+*/
+
 /**
  * The CT_init() function creates a new table. First of all it should have the
  * size of the boundaries which we gain from arena. For each row and column

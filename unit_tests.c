@@ -8,6 +8,9 @@
 #include "game.h"
 #include "draw_sdl.h"
 
+/*! \file unit_tests.c
+    \brief 
+*/
 
 void test_cell_print(){
 	C_print(C_new(3,4,1));

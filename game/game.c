@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/*! \file game.c
+    \brief 
+*/
+
 /**
  * This function creates a new Game!
  */

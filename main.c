@@ -7,6 +7,20 @@
 #include <stdlib.h>
 #include <time.h>
 
+/**
+ * @mainpage
+ * @file Doxygen
+ * @author Nigar Yusifzada & Mirzamendi Karimov
+ * @date 3 may 2020
+ * The Life Game consists of a universe which contains live cells.
+ * Тhey appear and dissapear according to some rules which will be
+ * explained later in the Codes. Let's start with the game
+ */
+
+/*! \file main.c
+    \brief  Let's run the game! 
+*/
+
 void consoleDraw(int optionGame)
 {
 
@@ -96,7 +110,7 @@ void sdlDraw(int optionGame)
 	game g = G_create(ct, optionGame);
 	/**
 	 * Starts the game. Repeats an algoritm in table each timeUnit
-	*/
+	 */
 	int sleepTimeMilliSec = 10;
 
 	SDL_Renderer *renderer;
