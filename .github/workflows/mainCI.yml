@@ -16,7 +16,7 @@ jobs:
           run: |
             mkdir BuildCI
             cd BuildCI
-            ccmake ..
+            cmake ..
             cmake --build .
         - name: 'Testing'
           run: |
