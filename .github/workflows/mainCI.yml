@@ -1,0 +1,34 @@
+name: 'CI'
+
+on:
+    push:
+        branches:
+        - master
+
+jobs:
+    all_linux:
+        runs-on: ubuntu latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: 'Packages Installed'
+          run: sudo apt update && sudo apt install libcunit1-dev gcovr
+        - name: 'Compile'
+          run: |
+            mkdir BuildCI
+            cd BuildCI
+            ccmake ..
+            cmake --build .
+        - name: 'Testing'
+          run: |
+            cd BuildCI
+            chmod +x *
+            ctest -V
+        - name: 'Coverage'
+          run: |
+            cd BuildCI
+            chmod +x *
+            make cover_html
+        - uses: actions/upload-artifact@v1
+          with:
+            name: CoverageWeb
+            path: BuildCI/Covergae
