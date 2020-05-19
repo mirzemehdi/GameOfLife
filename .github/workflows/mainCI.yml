@@ -7,7 +7,7 @@ on:
 
 jobs:
     all_linux:
-        runs-on: ubuntu latest
+        runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
         - name: 'Packages Installed'
