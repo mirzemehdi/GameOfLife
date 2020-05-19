@@ -11,7 +11,7 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: 'Packages Installed'
-          run: sudo apt update && sudo apt install libcunit1-dev gcovr
+          run: sudo apt update && sudo apt install libcunit1-dev gcovr libsdl2-dev
         - name: 'Compile'
           run: |
             mkdir BuildCI
